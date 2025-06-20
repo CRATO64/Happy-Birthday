@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top, #ffecd2 0%, #fcb69f 100%);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff4081;
+      margin-top: 50px;
+      font-size: 3rem;
+    }
+
+    .balloon {
+      width: 80px;
+      height: 100px;
+      background-color: #ff4081;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: absolute;
+      cursor: pointer;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background-color: #333;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0); }
+    }
+
+    .burst {
+      animation: burstAnim 0.3s forwards;
+    }
+
+    @keyframes burstAnim {
+      to {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday! 🎂</h1>
+  <div class="balloon" style="left: 20%; top: 200px; background-color: #ff6f61;"></div>
+  <div class="balloon" style="left: 40%; top: 250px; background-color: #6ec6ff;"></div>
+  <div class="balloon" style="left: 60%; top: 220px; background-color: #81c784;"></div>
+  <div class="balloon" style="left: 80%; top: 270px; background-color: #ffd54f;"></div>
+
+  <script>
+    const balloons = document.querySelectorAll('.balloon');
+
+    balloons.forEach(balloon => {
+      balloon.addEventListener('click', () => {
+        balloon.classList.add('burst');
+        setTimeout(() => balloon.remove(), 300);
+      });
+    });
+  </script>
+</body>
+</html>
